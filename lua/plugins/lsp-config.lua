@@ -9,7 +9,13 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        automatic_installation = true,
+        automatic_installation = false,
+        ensure_installed = {
+          "eslint",
+          "ts_ls",
+          "volar",
+          "tailwindcss",
+        },
       })
     end,
   },
