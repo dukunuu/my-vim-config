@@ -26,7 +26,19 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.ts_ls.setup({ capabilities = capabilities })
-      lspconfig.volar.setup({ capabilities = capabilities })
+      lspconfig.volar.setup({
+        capabilities = capabilities,
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        init_options = {
+          vue = {
+            hybridMode = false,
+          },
+          typescript = {
+            tsdk =
+            "/home/dukunuu/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib/"
+          },
+        },
+      })
       lspconfig.tailwindcss.setup({ capabilities = capabilities })
       lspconfig.pyright.setup({ capabilities = capabilities })
       lspconfig.intelephense.setup({ capabilities = capabilities })
@@ -34,6 +46,7 @@ return {
       lspconfig.htmx.setup({ capabilities = capabilities })
       lspconfig.cssls.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({ capabilities = capabilities })
+      lspconfig.graphql.setup({ capabilities = capabilities })
       vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
