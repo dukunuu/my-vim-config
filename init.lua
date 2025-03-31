@@ -21,6 +21,13 @@ if vim.fn.has('wsl') == 1 then
   })
 end
 
+if vim.g.neovide then
+  vim.g.neovide_transparency = 0.8
+  vim.g.neovide_normal_opacity = 0.8
+end
+
+
 require("vim-options")
 require("lazy").setup("plugins")
-
+require("config.autocmd")
+require("core.lsp")
