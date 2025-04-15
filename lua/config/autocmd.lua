@@ -13,7 +13,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		map("<space>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 		map("<space>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-		map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+		map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+    map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 		-- The following two autocommands are used to highlight references of the
 		-- word under your cursor when your cursor rests there for a little while.
@@ -62,5 +63,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				}))
 			end, "[T]oggle Inlay [H]ints")
 		end
+
+    if client and not client:supports_method('textDocument/willSaveWaitUntil')
+       and client:supports_method('textDocument/formatting') then
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = vim.api.nvim_create_augroup("kickstart-lsp-format-on-save", {
+          clear = true,
+        }),
+        callback = function()
+          vim.lsp.buf.format({
+            filter = function(c)
+              return c.id == client.id
+            end,
+            bufnr = event.buf,
+            async = false,
+          })
+        end,
+      })
+    end
 	end,
 })

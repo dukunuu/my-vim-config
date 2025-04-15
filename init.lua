@@ -26,7 +26,6 @@ if vim.g.neovide then
   vim.g.neovide_normal_opacity = 0.8
 end
 
-
 require("vim-options")
 require("lazy").setup("plugins")
 require("config.autocmd")
