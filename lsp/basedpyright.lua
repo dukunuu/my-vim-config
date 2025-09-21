@@ -19,5 +19,8 @@ return {
         diagnosticMode = 'openFilesOnly',
       },
     },
+    python = {
+      pythonPath = vim.fn.exepath('python'),  -- Use the Python from current environment
+    },
   },
 }
