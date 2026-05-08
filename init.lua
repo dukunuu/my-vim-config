@@ -26,6 +26,8 @@ if vim.g.neovide then
   vim.g.neovide_normal_opacity = 0.8
 end
 
+vim.g.mapleader = " "
+
 require("vim-options")
 require("lazy").setup("plugins")
 require("config.autocmd")

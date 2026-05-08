@@ -5,4 +5,11 @@ return {
       require("mason").setup({})
     end,
   },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  },
 }

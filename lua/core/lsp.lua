@@ -6,7 +6,8 @@ vim.lsp.enable({
 	"html",
   "basedpyright",
   "gopls",
-  "volar"
+  "volar",
+  "svelte",
 })
 
 vim.diagnostic.config({virtual_lines = {current_line = true}})
