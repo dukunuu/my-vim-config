@@ -8,6 +8,7 @@ vim.lsp.enable({
   "gopls",
   "volar",
   "svelte",
+  "astro",
 })
 
 vim.diagnostic.config({virtual_lines = {current_line = true}})
